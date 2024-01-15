@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://qlkasvijkrpv"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_2h1h2"]
+[ext_resource type="Texture2D" uid="uid://c140wtlwhl33n" path="res://sprites/32x32-virus.png" id="2_uqgx6"]
+[ext_resource type="Script" path="res://StartSpread.gd" id="3_ry181"]
+[ext_resource type="PackedScene" uid="uid://c23fwvlw372f3" path="res://HoverElement.tscn" id="4_0kx6b"]
+
+[node name="Mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_2h1h2")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 540.0
+offset_right = 753.0
+offset_bottom = 606.0
+text = "Exit"
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 458.0
+offset_right = 749.0
+offset_bottom = 512.0
+text = "Options"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(43, 31)
+scale = Vector2(1.335, 1)
+texture = ExtResource("2_uqgx6")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 88.0
+offset_right = 786.0
+offset_bottom = 128.0
+text = "Spread"
+
+[node name="StartSpread" type="Node2D" parent="."]
+position = Vector2(494, 145)
+script = ExtResource("3_ry181")
+
+[node name="HoverElement" parent="." instance=ExtResource("4_0kx6b")]
+position = Vector2(61, 237)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

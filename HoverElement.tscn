@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c23fwvlw372f3"]
+
+[ext_resource type="Script" path="res://HoverElement.gd" id="1_q7srr"]
+
+[node name="HoverElement" type="Area2D"]
+script = ExtResource("1_q7srr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 0, 0)
+
+[node name="SpreadArea" type="Polygon2D" parent="CollisionPolygon2D"]
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 4.9743, 4.9743)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
